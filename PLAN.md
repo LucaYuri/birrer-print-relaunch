@@ -1,5 +1,7 @@
 # birrer-print.ch — Relaunch & Shopify-Migration
 
+**Online:** https://lucayuri.github.io/birrer-print-relaunch/ · **Repo:** https://github.com/LucaYuri/birrer-print-relaunch
+
 **Stand:** 26.10.2026 · **Altshop:** `birrer-print.ch` → `shop.birrer-print.ch` (PrestaShop 1.7, Theme `classic` + Modul CreativeElements)
 
 Vorgehen in drei Etappen: **(1)** Altshop vollständig scrapen · **(2)** Prototyp der neuen Site bauen · **(3)** Katalog nach Shopify übertragen.
@@ -46,13 +48,17 @@ Das heisst konkret:
 - **Kein Produktfoto ist grösser als 200×200 px** (bis auf ein einziges 600×400-Bild).
 - Die 623 Bilder mit 550×650 px sind nicht 623 Fotos, sondern **ein einziges gescanntes Schriftmuster-Blatt**, das bei jedem konfigurierbaren Artikel als zweites Bild hängt. Es ist eine Auswahlhilfe, kein Produktbild.
 - Fotos werden massiv mehrfach verwendet: ein Bild steht für **165 Produkte**, ein weiteres für 110, dann 34, 32, 20, 19 …
-- Serverseitig existiert nichts Besseres: `/img/p/.../<id>.jpg` ist die hochgeladene Originaldatei, die 800-px-Ansichten des Shops sind reine Hochskalierungen. Geprüft gegen `-original`, `_default` und freie Grössenangaben — alles 404.
+- Serverseitig existiert nichts Besseres: `/img/p/.../<id>.jpg` ist die hochgeladene Originaldatei. Geprüft gegen `-original`, `_default` und freie Grössenangaben — alles 404.
+- Die 800-px-Ansichten des Shops (`large_default`) sind **keine Hochskalierungen**, sondern das kleine Motiv zentriert auf einer weissen 800×800-Leinwand. Gemessener Füllgrad: **2–6 %**. Wer sie verwendet, zeigt fast nur Weissfläche — im Altshop ist das heute so.
+- Auch die Originale sind oft randlastig: Füllgrad im Median **57 %**, im Extremfall 32 %.
 - Verifiziert mit `sips` gegen den eigenen JPEG-Parser, 25 Stichproben, 25/25 identisch.
 
 **Produkte nach Bildlage:** 850 haben ausschliesslich 200-px-Bilder, 623 haben ein 200-px-Foto plus die Schriftmuster-Tabelle, 1 Produkt hat das 600×400-Bild.
 
 > **Konsequenz:** Mit diesem Bestand lässt sich kein Shop bauen, der 2026 verkauft — unabhängig vom Layout. Das ist keine Design-, sondern eine Beschaffungsfrage. Realistischer Weg: Fotoproduktion nach Priorität. Da ein Foto bis zu 165 Artikel abdeckt, reichen **grob 150–200 neue Aufnahmen für den grössten Teil des Sortiments** — die 616 Motive sind die Obergrenze, nicht 1 474. Das macht die Aufgabe bezahlbar.
 > Die Schriftmuster-Tabelle gehört im neuen Shop nicht als Produktbild hinterlegt, sondern als Schriftauswahl ins Konfigurationsformular (siehe 2.3).
+
+**Sofortmassnahme, bereits umgesetzt:** `scraper/3b-crop.mjs` schneidet den Weissraum aus allen Motiven (528 von 617 beschnitten). Das Motiv füllt danach die Kachel, statt darin zu schwimmen — die Auflösung bleibt gleich, aber man erkennt den Artikel. Nebeneffekt: Da nur eine Datei je Motiv statt je `id_image` geschrieben wird, schrumpft der Anzeigebestand von **2 097 Dateien / 54 MB auf 617 Dateien / 6,2 MB**.
 
 ### 2.2 Produkttexte sind praktisch nicht vorhanden
 Die mediane Beschreibung ist **50 Zeichen** lang, **812 Produkte** haben weniger als 60 Zeichen — meist nur der Produktname als Satz („Holzstempel 1 zeilig bis 2 cm lang"). Merkmale/Features sind bei **keinem** Produkt gepflegt.
@@ -95,21 +101,25 @@ data/
   product-urls.json      1 474 Produkt-URLs mit Kategoriezuordnung
   products.json          1 474 Produkte, vollständig (4,3 MB)
   content.json           7 redaktionelle Seiten (Text + HTML) + Kontaktdaten
-  images/                2 097 Bilder: <id>.jpg (Original) + <id>-800.jpg
+  images/                2 097 Originalbilder (Archiv, unverändert)
+  image-map.json         id_image -> Anzeigedatei + Masse
+  crop-report.json       Beschnitt-Protokoll
   scrape-report.json     Scrape-Protokoll, 0 Fehler
   images-report.json     Bildinventar mit echten Pixelmassen
 export/
   shopify-products-01…04.csv   18 513 Zeilen, Shopify-CSV-Import-Format
   shopify-products.json        1 474 Payloads für Admin-API / MCP
   shopify-export-report.json   Exportprotokoll + 55 Warnungen
-site/
-  index.html             Sortimentsübersicht (selbst-enthaltend, 923 KB)
+docs/                    = GitHub Page
+  index.html             Sortimentsübersicht (selbst-enthaltend)
+  img/                   617 beschnittene Anzeigebilder (6,2 MB)
 scraper/
   lib.mjs                HTTP, Retry, Parallelität, HTML-Bereinigung
   1-discover.mjs         Kategorien + Produkt-URLs
   1b-orphans.mjs         ID-Lücken auf verwaiste Produkte prüfen
   2-products.mjs         Produktdetails
   3-images.mjs           Bilder + Pixelmasse
+  3b-crop.mjs            Weissraum beschneiden, Duplikate zusammenfassen
   4-build-site.mjs       Übersichts-Website generieren
   5-shopify-export.mjs   Shopify-CSV + API-Payloads
   6-content.mjs          Redaktionelle Seiten
@@ -122,6 +132,7 @@ node scraper/1-discover.mjs      # ~1 min
 node scraper/1b-orphans.mjs      # ~2 min, optional (Vollständigkeitsprüfung)
 node scraper/2-products.mjs      # ~4 min
 node scraper/3-images.mjs        # ~3 min
+node scraper/3b-crop.mjs         # ~2 min
 node scraper/6-content.mjs       # ~10 s
 node scraper/4-build-site.mjs    # instant
 node scraper/5-shopify-export.mjs # instant
@@ -133,14 +144,15 @@ Technische Grundlage des Scrapers: PrestaShop 1.7 rendert pro Produktseite ein v
 
 ## 4 · Sortimentsübersicht (fertig)
 
-`site/index.html` — per Doppelklick öffnen, kein Server nötig. Der Katalog ist in die Datei eingebettet, Bilder kommen relativ aus `data/images/`.
+Online unter **https://lucayuri.github.io/birrer-print-relaunch/** — oder lokal `docs/index.html` per Doppelklick öffnen, kein Server nötig. Der Katalog ist in die Datei eingebettet.
 
 - Alle 1 474 Produkte als Raster in drei Grössen (Klein/Mittel/Gross) oder als Tabelle. Die Kacheln sind bewusst grösser als die Quellauflösung — die Bilder werden dadurch weich, aber man erkennt überhaupt etwas.
 - Navigation über 12 Hauptgruppen mit aufklappbaren Unterkategorien
 - Volltextsuche über Name, Beschreibung, Artikelnummer, Kategorie
 - Sortierung nach Kategorie, Name, Preis, Artikelnummer
 - Schnellfilter: nur Varianten · nur Texteingabe · ohne Preis
-- Detailansicht mit allen Bildern (inkl. **echter Pixelmasse pro Bild** — macht das Bildproblem aus 2.1 direkt sichtbar), Varianten, Kundeneingabefeldern, Kategorien und Link in den Altshop
+- Detailansicht mit allen Bildern (inkl. **echter Pixelmasse pro Bild** vor und nach dem Beschnitt — macht das Bildproblem aus 2.1 direkt sichtbar), Varianten, Kundeneingabefeldern, Kategorien und Link in den Altshop
+- Klick auf ein Bild öffnet es in voller Grösse
 
 Zweck: Sortimentsüberblick und Entscheidungsgrundlage für Bereinigung — nicht der Prototyp der neuen Site.
 
@@ -241,4 +253,4 @@ Sortiment in `site/index.html` durchgehen und die Entscheidungen 1, 2 und 5 tref
 ---
 
 ### Nebenbefund
-Der Projektordner heisst `_birrer print ` — mit **Leerzeichen am Ende**. Das führt bei `npm`, `git` und Deploy-Tools zu schwer auffindbaren Fehlern. Vor dem Prototyp umbenennen, z. B. `birrer-print`.
+Der lokale Projektordner heisst `_birrer print ` — mit **Leerzeichen am Ende**. Das ist beim Beschneiden bereits konkret aufgeschlagen: `URL.pathname` kodiert das Leerzeichen zu `%20`, worauf `sips` die Datei nicht mehr fand. Im Repo heisst das Projekt sauber `birrer-print-relaunch`; der lokale Ordner sollte vor dem Prototyp ebenfalls umbenannt werden.
