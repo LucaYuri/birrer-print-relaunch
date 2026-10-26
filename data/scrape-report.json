@@ -1,0 +1,21 @@
+{
+  "scraped_at": "2026-10-26T12:23:54.634Z",
+  "source": "https://shop.birrer-print.ch",
+  "platform": "PrestaShop 1.7 (Theme classic + CreativeElements)",
+  "products_expected": 1474,
+  "products_ok": 1474,
+  "products_failed": 0,
+  "errors": [],
+  "stats": {
+    "with_images": 1474,
+    "without_images": 0,
+    "total_images": 2097,
+    "unique_images": 2097,
+    "with_variants": 608,
+    "with_customization": 611,
+    "with_price_zero": 55,
+    "with_description": 1474,
+    "without_description": 0,
+    "max_variant_combinations": 28
+  }
+}

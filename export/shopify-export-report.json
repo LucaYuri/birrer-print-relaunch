@@ -1,0 +1,287 @@
+{
+  "generated_at": "2026-10-26T12:24:59.361Z",
+  "products": 1474,
+  "csv_rows": 18513,
+  "variant_rows": 17890,
+  "image_only_rows": 623,
+  "csv_files": 4,
+  "products_with_customization": 611,
+  "warnings_count": 55,
+  "warnings": [
+    {
+      "id_product": 620,
+      "handle": "handpragezange-verchromt",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 650,
+      "handle": "hausnummer-aus-metall",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 728,
+      "handle": "warnschilder",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 842,
+      "handle": "parkplatzschild",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 964,
+      "handle": "prageschilder",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1028,
+      "handle": "wanderwegschilder",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1029,
+      "handle": "maschinenschilder",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1030,
+      "handle": "maschinenschilder-1030",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1031,
+      "handle": "typenschilder",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1057,
+      "handle": "lifttafeln",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1058,
+      "handle": "frontplatten-nach-ihren-angaben",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1059,
+      "handle": "frontplatten-nach-ihren-angaben-1059",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1060,
+      "handle": "industriegravuren",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1061,
+      "handle": "industriegravuren-1061",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1062,
+      "handle": "industriegravuren-1062",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1066,
+      "handle": "glasgravur",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1067,
+      "handle": "motivgravuren",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1068,
+      "handle": "individuelle-gravuren",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1069,
+      "handle": "individuelle-gravuren-1069",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1070,
+      "handle": "firmenschild",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1071,
+      "handle": "firmenschild-1071",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1072,
+      "handle": "firmenschild-1072",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1073,
+      "handle": "spielgruppenschild",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1074,
+      "handle": "bauernhofschild",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1075,
+      "handle": "firmenschild-1075",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1076,
+      "handle": "firmenschild-1076",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1077,
+      "handle": "firmenschild-1077",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1078,
+      "handle": "firmenschild-1078",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1079,
+      "handle": "standschild",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1080,
+      "handle": "firmenschild-1080",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1081,
+      "handle": "praxisschild",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1082,
+      "handle": "praxisschild-1082",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1083,
+      "handle": "tennisclub-schild",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1084,
+      "handle": "praxisschild-1084",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1085,
+      "handle": "firmenschild-1085",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1086,
+      "handle": "praxisschild-1086",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1087,
+      "handle": "firmenschild-1087",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1088,
+      "handle": "firmenschild-1088",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1089,
+      "handle": "coiffure-schild",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1090,
+      "handle": "firmenschild-1090",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1091,
+      "handle": "firmenschild-1091",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1092,
+      "handle": "firmenschild-1092",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1297,
+      "handle": "oeffnungszeiten",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1298,
+      "handle": "folien-texte-auf-ubertragungsfolie",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1299,
+      "handle": "folien-individuell-nach-ihren-angaben",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1300,
+      "handle": "glasdekor-folie",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1333,
+      "handle": "schaufenster",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1334,
+      "handle": "schaufenster-1334",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1335,
+      "handle": "braille-u-taktile-schriften-im-uv-druck",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1337,
+      "handle": "folien-texte-auf-ubertragungsfolie-1337",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 1511,
+      "handle": "parkplatzschilder",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 2347,
+      "handle": "laser-schneiden",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 2348,
+      "handle": "laser-schneiden-2348",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 2349,
+      "handle": "laser-schneiden-2349",
+      "issue": "Preis 0 / nicht hinterlegt"
+    },
+    {
+      "id_product": 2350,
+      "handle": "laser-beschriften",
+      "issue": "Preis 0 / nicht hinterlegt"
+    }
+  ]
+}
